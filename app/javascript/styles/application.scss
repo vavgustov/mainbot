@@ -1,0 +1,15 @@
+$variable-columns: false;
+
+@import "~bulma/bulma";
+
+.navbar {
+  box-shadow: 0 0 1px #868686;
+}
+
+.card-content {
+  padding: 1rem;
+
+  &:first-child {
+    padding-bottom: 0;
+  }
+}

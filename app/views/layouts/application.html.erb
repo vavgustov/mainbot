@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Swarm</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Swarm</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_pack_tag 'application' %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+<%= render 'shared/navbar' %>
 
-  <body>
+<section class="section">
+  <div class="container is-fluid">
+    <%= render_notifications if !flash.empty? %>
+
     <%= yield %>
-  </body>
+  </div>
+</section>
+
+<%= javascript_pack_tag 'application' %>
 </html>
