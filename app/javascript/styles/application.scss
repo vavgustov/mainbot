@@ -13,3 +13,15 @@ $variable-columns: false;
     padding-bottom: 0;
   }
 }
+
+.is-primary {
+  &:hover {
+    background: darken($turquoise, 5%);
+  }
+}
+
+.is-info {
+  &:hover {
+    background: darken($cyan, 5%);
+  }
+}
