@@ -1,0 +1,24 @@
+<p>
+  <strong>Title:</strong>
+  <%= @retailer.title %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @retailer.day %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @retailer.url %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @retailer.active %>
+</p>
+
+<hr/>
+
+<%= link_to 'Edit', edit_foodbot_retailer_path(@retailer), class: 'button is-link' %>
+<%= link_to 'Back', foodbot_retailers_path, class: 'button is-text' %>

@@ -1,15 +1,16 @@
 <h1 class="title">Languages</h1>
 
-<table class="table is-striped">
-  <thead>
+<% unless @languages.blank? %>
+  <table class="table is-striped">
+    <thead>
     <tr>
       <th>Title</th>
       <th>Active</th>
-      <th colspan="3">Actions</th>
+      <th class="has-text-centered" colspan="3">Actions</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @languages.each do |language| %>
       <tr>
         <td><%= language.title %></td>
@@ -19,9 +20,10 @@
         <td><%= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<hr/>
+  <hr/>
+<% end %>
 
 <%= link_to 'New Language', new_octobot_language_path, class: 'button is-link' %>

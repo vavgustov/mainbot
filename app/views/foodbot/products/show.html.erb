@@ -1,0 +1,14 @@
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @product.active %>
+</p>
+
+<hr/>
+
+<%= link_to 'Edit', edit_foodbot_product_path(@product), class: 'button is-link' %>
+<%= link_to 'Back', foodbot_products_path, class: 'button is-text' %>

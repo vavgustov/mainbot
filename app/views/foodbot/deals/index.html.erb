@@ -1,0 +1,36 @@
+<% if @deals.blank? %>
+  <h1 class="title has-text-centered">No deals found.</h1>
+<% else %>
+  <h1 class="title has-text-centered">
+    Deals from <span class="has-text-danger"><%= @deals.first.retailer.title %></span>
+    от <%= @deals.first.download_date.strftime('%m/%d/%Y') %>
+  </h1>
+
+  <% @deals.each_slice(4) do |deals| %>
+    <div class="columns">
+      <% deals.each do |deal| %>
+        <div class="column is-one-quarter">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= image_tag deal.image %>
+              </figure>
+            </div>
+
+            <div class="card-content">
+              <div class="content">
+                <div class="has-text-weight-bold">
+                  <%= deal.description %> <span class="tag"><%= deal.discount %></span>
+                </div>
+                <div><span class="has-text-danger has-text-weight-bold is-size-4"><%= deal.price_new %></span> /
+                  <s class="is-size-6"><%= deal.price_old %></s></div>
+                <div class="has-text-weight-bold"><%= deal.quantity %></div>
+                <div><%= deal.date %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

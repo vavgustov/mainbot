@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321121333) do
+ActiveRecord::Schema.define(version: 20180326180549) do
+
+  create_table "foodbot_deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint "product_id"
+    t.bigint "retailer_id"
+    t.string "description"
+    t.string "image"
+    t.string "discount"
+    t.string "price_new"
+    t.string "price_old"
+    t.string "quantity"
+    t.string "date"
+    t.date "download_date"
+    t.index ["product_id"], name: "index_foodbot_deals_on_product_id"
+    t.index ["retailer_id"], name: "index_foodbot_deals_on_retailer_id"
+  end
+
+  create_table "foodbot_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "title"
+    t.boolean "active"
+    t.index ["title"], name: "index_foodbot_products_on_title", unique: true
+  end
+
+  create_table "foodbot_retailers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "title"
+    t.string "url"
+    t.string "day"
+    t.boolean "active"
+    t.index ["title"], name: "index_foodbot_retailers_on_title", unique: true
+  end
 
   create_table "octobot_languages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"

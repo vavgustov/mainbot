@@ -1,0 +1,33 @@
+<h1 class="title">Retailers</h1>
+
+<% unless @retailers.blank? %>
+  <table class="table is-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Day</th>
+      <th>Url</th>
+      <th>Active</th>
+      <th class="has-text-centered" colspan="3">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @retailers.each do |retailer| %>
+      <tr>
+        <td><%= retailer.title %></td>
+        <td><%= retailer.day %></td>
+        <td><%= retailer.url %></td>
+        <td><%= retailer.active %></td>
+        <td><%= link_to 'Show', retailer %></td>
+        <td><%= link_to 'Edit', edit_foodbot_retailer_path(retailer) %></td>
+        <td><%= link_to 'Destroy', retailer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <hr/>
+<% end %>
+
+<%= link_to 'New Retailer', new_foodbot_retailer_path, class: 'button is-link' %>

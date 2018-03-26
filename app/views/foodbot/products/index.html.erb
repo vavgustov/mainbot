@@ -1,0 +1,29 @@
+<h1 class="title">Products</h1>
+
+<% unless @products.blank? %>
+  <table class="table is-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Active</th>
+      <th class="has-text-centered" colspan="3">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.active %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_foodbot_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <hr/>
+<% end %>
+
+<%= link_to 'New Product Type', new_foodbot_product_path, class: 'button is-link' %>

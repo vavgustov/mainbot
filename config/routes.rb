@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   end
 
   namespace :foodbot do
-
+    resources :retailers
+    resources :products
+    get 'run', to: 'data#run'
+    root 'deals#index'
   end
 
   root 'pages#home'
