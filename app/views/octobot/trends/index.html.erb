@@ -1,0 +1,38 @@
+<% if @trends.blank? %>
+  <h1 class="title has-text-centered">No trends found.</h1>
+<% else %>
+  <h1 class="title has-text-centered">Github new trends from <%= @trends.first.download_date %></h1>
+  <table class="table is-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th width="15%">Stats</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @trends.each do |trend| %>
+    <tr>
+      <td>
+        <%= link_to trend.title, trend.link, target: "_blank" %>
+        <br/>
+        <%= octicon 'star', height: 14 %>
+        <%= trend.stars %> /
+        <%= octicon 'repo-forked', height: 14 %>
+        <%= trend.forks %>
+      </td>
+      <td>
+        <%= trend.description %>
+        <br/>
+        <i><%= trend.language.title %> / <%= trend.github_language %></i>
+      </td>
+      <td><%= trend.stats %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <hr/>
+
+  <%= link_to 'Mark as checked', octobot_mark_path, class: 'button is-link' %>
+<% end %>

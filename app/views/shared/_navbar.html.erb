@@ -12,7 +12,11 @@
     <div id="nav-menu" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
-
+          <% @navbar_items.each do |item| %>
+            <%= link_to item[:title], item[:path], class: "navbar-item #{is_active_page(item[:path])}" %>
+          <% end %>
+          <%#= link_to 'Trends', root_path, class: "navbar-item #{is_active_page(root_path)}" %>
+          <%#= link_to 'Languages', languages_path, class: "navbar-item #{is_active_page(languages_path)}" %>
         </div>
       </div>
     </div>

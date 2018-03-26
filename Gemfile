@@ -13,8 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.4'
 
 gem 'bootsnap', require: false
-gem 'faraday', '~> 0.14.0'
+gem 'draper', '~> 3.0', '>= 3.0.1'
 gem 'dotenv-rails'
+gem 'faraday', '~> 0.14.0'
 gem 'octicons_helper'
 
 group :development, :test do

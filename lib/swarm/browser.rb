@@ -12,7 +12,7 @@ module Swarm
           page = response.body
           break
         end
-        raise Octobot::SpiderDownloadFailure if page.nil?
+        raise Swarm::SpiderDownloadFailure if page.nil?
         page
       end
 
