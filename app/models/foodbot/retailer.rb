@@ -14,7 +14,7 @@ module Foodbot
 
       results = []
       selectors = YAML.load_file(Rails.root.join('config', 'selectors/foodbot.yml'))
-      html = results_html(product)
+      html = Nokogiri::HTML(Swarm::Browser.download(build_product_url(product), js: true))
       html.css('.b-offer').each do |offer|
         results << Deal.save_offer(offer, selectors, product, self)
       end
@@ -23,18 +23,11 @@ module Foodbot
 
     private
 
+    # TODO: extract this
     def build_product_url(product)
       product_url = ENV['URL_TEMPLATE'].dup
       product_url.sub!(':location', ENV['LOCATION'])
       product_url.sub!(':params', { q: product.title, retailer: url }.to_param)
-
-      # dd product_url
-    end
-
-    def results_html(product)
-      browser = Capybara.current_session
-      browser.visit build_product_url(product)
-      Nokogiri::HTML(browser.body)
     end
   end
 end

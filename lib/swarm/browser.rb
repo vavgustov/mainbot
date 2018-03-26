@@ -5,7 +5,7 @@ module Swarm
         page = nil
         5.times do
           response = js ? process_with_js(url) : process_without_js(url)
-          unless response.status == 200
+          unless response.try(:status) == 200 || response.try(:status_code) == 200
             sleep 5
             next
           end
@@ -19,7 +19,9 @@ module Swarm
       private
 
       def process_with_js(url)
-        Capybara.current_session.visit url
+        browser = Capybara.current_session
+        browser.visit url
+        browser
       end
 
       def process_without_js(url)
