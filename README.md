@@ -1,28 +1,14 @@
-# README
+# Swarm
 
 finish port for octobot
 move to pg?
 
+model -> crawler -> do the staff
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Bug (rails/rails)
+bug: when generate with --skip-coffee is still generate coffee files
+also check action-cable and etc..
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -1,8 +1,19 @@
 module Octobot
-  class TrendItem < Crawler
+  class TrendCrawler < Crawler
     def initialize(model, content, language)
       @language = language
       super(model, content)
+    end
+
+    def run
+      trend_items = []
+      super do |element|
+        @field_html = element
+        trend = build
+        next unless Octobot::Trend.where(title: trend[:title]).count.zero?
+        trend_items << Octobot::Trend.find_or_create_by(trend)
+      end
+      trend_items
     end
 
     def language_id
@@ -37,10 +48,6 @@ module Octobot
 
     def checked
       false
-    end
-
-    def download_date
-      Date.today
     end
   end
 end

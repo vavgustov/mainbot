@@ -1,0 +1,9 @@
+wrapper: .b-offer
+item:
+  description: .b-offer__description
+  image: .b-image__root img
+  discount: .b-offer__badge
+  price_new: .b-offer__price-new
+  price_old: .b-offer__price-old
+  quantity: .b-offer__quantity
+  date: .b-offer__dates

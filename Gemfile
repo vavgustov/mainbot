@@ -10,7 +10,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
 
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 3.4'
+gem 'webpacker', '~> 3.4', '>= 3.4.1'
 
 gem 'bootsnap', require: false
 gem 'draper', '~> 3.0', '>= 3.0.1'
@@ -27,6 +27,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate', '~> 2.7', '>= 2.7.2'
+  gem 'pry-rails'
   gem 'debug-extras', '~> 0.4.3'
   gem 'better_errors', '~> 2.4'
   gem 'binding_of_caller', '~> 0.8.0'

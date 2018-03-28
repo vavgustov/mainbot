@@ -1,0 +1,2 @@
+pattern: https://github.com/trending/:language?:params
+since: weekly

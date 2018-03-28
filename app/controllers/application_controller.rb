@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def spider_failure
+    # TODO: send email notification
     render plain: 'Unable to download data...'
   end
 end

@@ -5,7 +5,8 @@ module Swarm
         page = nil
         5.times do
           response = js ? process_with_js(url) : process_without_js(url)
-          unless response.try(:status) == 200 || response.try(:status_code) == 200
+          status = response.try(:status) == 200 || response.try(:status_code) == 200
+          unless status
             sleep 5
             next
           end

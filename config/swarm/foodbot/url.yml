@@ -1,0 +1,2 @@
+pattern: https://edadeal.ru/:location/offers?:params
+location: sankt-peterburg

@@ -1,7 +1,0 @@
-title: div:nth-child(1) h3 a
-description: div:nth-child(3)
-language_selector: div:nth-child(4) span[itemprop=programmingLanguage]
-link: div:nth-child(1) a
-stars: div:nth-child(4) a:nth-child(2)
-forks: div:nth-child(4) a:nth-child(3)
-stats: div:nth-child(4) span
