@@ -59,6 +59,9 @@ GEM
     bootsnap (1.1.8)
       msgpack (~> 1.0)
     builder (3.2.3)
+    bullet (5.7.5)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11.0)
     byebug (10.0.1)
     capybara (2.18.0)
       addressable
@@ -190,6 +193,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.8)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.11.0)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -213,6 +217,7 @@ DEPENDENCIES
   better_errors (~> 2.4)
   binding_of_caller (~> 0.8.0)
   bootsnap
+  bullet (~> 5.7, >= 5.7.5)
   byebug
   capybara (~> 2.13)
   debug-extras (~> 0.4.3)
