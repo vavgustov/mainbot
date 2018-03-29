@@ -13,19 +13,13 @@ module Foodbot
 
     validates :title, presence: true, uniqueness: true
 
-    #  should be product:retailer:deal
-
-
     class << self
       def process_products
-        deals = {}
-        retailers = Foodbot::Retailer.today.active
+        products = {}
         active.each do |product|
-          retailers.each do |retailer|
-            deals[] << retailer.scan(product)
-          end
+          products[product.title] = Foodbot::Retailer.process_retailers(product)
         end
-        deals
+        products
       end
     end
   end

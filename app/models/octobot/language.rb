@@ -10,7 +10,6 @@
 module Octobot
   class Language < ApplicationRecord
     include HasStatus
-    include HasDownloadUrl
 
     class << self
       def process_languages
@@ -18,7 +17,7 @@ module Octobot
         return trends unless should_run?
         languages = Language.active
         languages.each do |language|
-          trends[language.title.downcase] = process_language(language)
+          trends[language.title.downcase] = Octobot::Trend.process_trends(language)
         end
         trends
       end
@@ -33,14 +32,6 @@ module Octobot
 
       def settings_path
         Rails.root.join('config', 'swarm/octobot/settings.yml')
-      end
-
-      def process_language(language)
-        link = download_url(language: language.title.downcase)
-        # html = Nokogiri::HTML(Swarm::Browser.download(link, js: false))
-        html = Nokogiri::HTML(File.open(Rails.root.join('public', 'pages/octobot.html')))
-        crawler = Octobot::TrendCrawler.new(Octobot::Trend, html, language)
-        crawler.run
       end
     end
   end

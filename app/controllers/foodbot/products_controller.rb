@@ -9,7 +9,7 @@ module Foodbot
     def show; end
 
     def new
-      @product = Product.new
+      @product = Product.new(active: true)
     end
 
     def edit; end

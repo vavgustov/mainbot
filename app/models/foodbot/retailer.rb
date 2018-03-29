@@ -17,11 +17,14 @@ module Foodbot
     validates :title, presence: true, uniqueness: true
     validates :day, presence: true, inclusion: { in: Date::DAYNAMES.map(&:downcase) }
 
-    def scan(product)
-      # html = Nokogiri::HTML(Swarm::Browser.download(build_product_url(product), js: true))
-      html = Nokogiri::HTML(File.open(Rails.root.join('public', 'pages/foodbot.html')))
-      crawler = Foodbot::DealCrawler.new(Foodbot::Deal, html, product, self)
-      crawler.run
+    class << self
+      def process_retailers(product)
+        retailers = {}
+        today.active.each do |retailer|
+          retailers[retailer.title] = Foodbot::Deal.process_deals(product, retailer)
+        end
+        retailers
+      end
     end
   end
 end

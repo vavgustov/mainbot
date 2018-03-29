@@ -10,7 +10,7 @@ module Foodbot
       deals = []
       super do |element|
         @field_html = element
-        deals = Foodbot::Deal.find_or_create_by(build)
+        deals << Foodbot::Deal.find_or_create_by(build)
       end
       deals
     end

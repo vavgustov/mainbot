@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
     @navbar_items = []
   end
 
-  def spider_failure
+  def spider_failure(exception)
     # TODO: send email notification
-    render plain: 'Unable to download data...'
+    render plain: "Unable to download data from #{exception.message}"
   end
 end

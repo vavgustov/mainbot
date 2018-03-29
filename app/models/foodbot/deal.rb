@@ -17,9 +17,21 @@
 
 module Foodbot
   class Deal < ApplicationRecord
+    include HasDownloadUrl
+
     belongs_to :retailer, class_name: 'Foodbot::Retailer'
     belongs_to :product, class_name: 'Foodbot::Product'
 
     scope :latest, -> { includes(:product, :retailer).where(download_date: maximum(:download_date)) }
+
+    class << self
+      def process_deals(product, retailer)
+        link = download_url(q: product.title, retailer: retailer.url)
+        html = Nokogiri::HTML(Swarm::Browser.download(link, js: true))
+        # html = Nokogiri::HTML(File.open(Rails.root.join('public', 'pages/foodbot.html')))
+        crawler = Foodbot::DealCrawler.new(Foodbot::Deal, html, product, retailer)
+        crawler.run
+      end
+    end
   end
 end

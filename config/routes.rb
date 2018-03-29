@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   namespace :octobot do
     resources :languages
-    get 'mark', to: 'trends#mark'
-    get 'run', to: 'data#run'
+    resource :status, only: :update, controller: :trend_statuses
     root 'trends#index'
   end
 
   namespace :foodbot do
     resources :retailers
     resources :products
-    get 'run', to: 'data#run'
     root 'deals#index'
   end
+
+  get 'crawler', to: 'crawler#index'
 
   root 'pages#home'
 end

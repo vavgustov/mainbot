@@ -17,6 +17,18 @@
 
 module Octobot
   class Trend < ApplicationRecord
+    include HasDownloadUrl
+
     belongs_to :language, class_name: 'Octobot::Language'
+
+    class << self
+      def process_trends(language)
+        link = download_url(language: language.title.downcase)
+        html = Nokogiri::HTML(Swarm::Browser.download(link, js: false))
+        # html = Nokogiri::HTML(File.open(Rails.root.join('public', 'pages/octobot.html')))
+        crawler = Octobot::TrendCrawler.new(Octobot::Trend, html, language)
+        crawler.run
+      end
+    end
   end
 end

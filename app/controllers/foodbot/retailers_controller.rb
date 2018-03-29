@@ -9,7 +9,7 @@ module Foodbot
     def show; end
 
     def new
-      @retailer = Retailer.new
+      @retailer = Retailer.new(active: true)
     end
 
     def edit; end
