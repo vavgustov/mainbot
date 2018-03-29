@@ -19,7 +19,7 @@ class Crawler
   def build
     item = {}
     @model.column_names.map(&:to_sym).each do |method|
-      next unless respond_to?(method)
+      next unless respond_to?(method, true)
       item[method] = send(method)
     end
     item
