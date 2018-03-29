@@ -10,6 +10,7 @@ module Octobot
       super do |element|
         @field_html = element
         trend = build
+        next if trend[:description].is_chinese?
         next unless Octobot::Trend.where(title: trend[:title]).count.zero?
         trend_items << Octobot::Trend.find_or_create_by(trend)
       end

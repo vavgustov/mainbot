@@ -12,6 +12,7 @@ require "action_view/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
+require_relative "../lib/core_ext/string"
 require_relative "../lib/swarm/exceptions"
 require_relative "../lib/swarm/browser"
 
