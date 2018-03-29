@@ -9,7 +9,7 @@ module Octobot
     def show; end
 
     def new
-      @language = Language.new
+      @language = Language.new(active: true)
     end
 
     def edit; end
