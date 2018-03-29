@@ -15,6 +15,8 @@ module Foodbot
       deals
     end
 
+    private
+
     def product_id
       @product.id
     end

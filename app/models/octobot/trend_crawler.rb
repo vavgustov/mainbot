@@ -16,6 +16,8 @@ module Octobot
       trend_items
     end
 
+    private
+
     def language_id
       @language.id
     end

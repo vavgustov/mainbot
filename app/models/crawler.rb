@@ -8,6 +8,14 @@ class Crawler
     @field_html = ''
   end
 
+  def run
+    @content.css(@selectors['wrapper']).each do |element|
+      yield element
+    end
+  end
+
+  private
+
   def build
     item = {}
     @model.column_names.map(&:to_sym).each do |method|
@@ -16,14 +24,6 @@ class Crawler
     end
     item
   end
-
-  def run
-    @content.css(@selectors['wrapper']).each do |element|
-      yield element
-    end
-  end
-
-  private
 
   def extract_value(selector)
     value = @field_html.css(@selectors['item'][selector])
