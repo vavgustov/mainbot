@@ -25,3 +25,5 @@ yarn-debug.log*
 
 .rake_tasks
 /public/pages
+/config/database.yml
+/config/secrets.yml
