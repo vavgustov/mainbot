@@ -1,5 +1,5 @@
 module Octobot
-  class TrendsBaseController < ApplicationController
+  class TrendsBaseController < BaseController
     before_action :set_trends
 
     private
