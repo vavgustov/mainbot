@@ -34,7 +34,7 @@ module Foodbot
 
     def destroy
       @retailer.destroy
-      redirect_to retailers_url, notice: 'Retailer was successfully destroyed.'
+      redirect_to foodbot_retailers_url, notice: 'Retailer was successfully destroyed.'
     end
 
     private
