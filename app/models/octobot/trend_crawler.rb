@@ -7,12 +7,10 @@ module Octobot
 
     def run
       trend_items = []
-      super do |element|
-        @field_html = element
-        trend = build
-        next if trend[:description].is_chinese?
-        next unless Octobot::Trend.where(title: trend[:title]).count.zero?
-        trend_items << Octobot::Trend.find_or_create_by(trend)
+      super do |entity|
+        next if entity[:description].is_chinese?
+        next unless Octobot::Trend.where(title: entity[:title]).count.zero?
+        trend_items << Octobot::Trend.create(entity)
       end
       trend_items
     end

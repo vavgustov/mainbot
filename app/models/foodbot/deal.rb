@@ -27,7 +27,7 @@ module Foodbot
     class << self
       def process_deals(product, retailer)
         link = download_url(q: product.title, retailer: retailer.url)
-        html = Nokogiri::HTML(Swarm::Browser.download(link, js: true))
+        html = Nokogiri::HTML(BotBrowser.download(link, js: true))
         # html = Nokogiri::HTML(File.open(Rails.root.join('public', 'pages/foodbot.html')))
         crawler = Foodbot::DealCrawler.new(Foodbot::Deal, html, product, retailer)
         crawler.run

@@ -8,9 +8,9 @@ module Foodbot
 
     def run
       deals = []
-      super do |element|
-        @field_html = element
-        deals << Foodbot::Deal.find_or_create_by(build)
+      super do |entity|
+        next unless Foodbot::Deal.where(description: entity[:description], download_date: entity[:download_date]).count.zero?
+        deals << Foodbot::Deal.create(entity)
       end
       deals
     end

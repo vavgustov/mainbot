@@ -14,7 +14,6 @@ require "rails/test_unit/railtie"
 
 require_relative "../lib/core_ext/string"
 require_relative "../lib/swarm/exceptions"
-require_relative "../lib/swarm/browser"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

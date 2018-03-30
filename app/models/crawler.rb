@@ -10,19 +10,20 @@ class Crawler
 
   def run
     @content.css(@selectors['wrapper']).each do |element|
-      yield element
+      @field_html = element
+      yield build_entity
     end
   end
 
   private
 
-  def build
-    item = {}
+  def build_entity
+    entity = {}
     @model.column_names.map(&:to_sym).each do |method|
       next unless respond_to?(method, true)
-      item[method] = send(method)
+      entity[method] = send(method)
     end
-    item
+    entity
   end
 
   def extract_value(selector)
