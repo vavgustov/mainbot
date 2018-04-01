@@ -41,7 +41,7 @@ module Octobot
     end
 
     def trends
-      @trends = Trend.where(checked: false, language: params[:id]).decorate
+      @trends = Trend.includes(:language).active.where(language: params[:id]).decorate
       render 'octobot/trends/index'
     end
 

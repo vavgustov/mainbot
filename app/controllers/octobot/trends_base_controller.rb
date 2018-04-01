@@ -5,7 +5,7 @@ module Octobot
     private
 
     def set_trends
-      @trends = Trend.includes(:language).where(checked: false)
+      @trends = Trend.includes(:language).active
     end
   end
 end

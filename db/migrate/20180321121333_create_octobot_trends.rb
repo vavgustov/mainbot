@@ -9,7 +9,7 @@ class CreateOctobotTrends < ActiveRecord::Migration[5.1]
       t.integer :stars
       t.integer :forks
       t.string :stats
-      t.boolean :checked
+      t.boolean :active
       t.date :download_date
     end
 

@@ -47,8 +47,8 @@ module Octobot
       end
     end
 
-    def checked
-      false
+    def active
+      true
     end
   end
 end

@@ -27,8 +27,7 @@ module ApplicationHelper
     Foodbot::Deal.latest.where(product: product).count
   end
 
-  # TODO: replace checked to status
   def language_trends_count(language)
-    Octobot::Trend.where(checked: false, language: language).count
+    Octobot::Trend.active.where(language: language).count
   end
 end

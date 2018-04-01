@@ -11,13 +11,14 @@
 #  stars             :integer
 #  forks             :integer
 #  stats             :string(255)
-#  checked           :boolean
+#  active            :boolean
 #  download_date     :date
 #
 
 module Octobot
   class Trend < ApplicationRecord
     include HasDownloadUrl
+    include HasStatus
 
     belongs_to :language, class_name: 'Octobot::Language'
 

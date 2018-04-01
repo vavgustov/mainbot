@@ -22,7 +22,7 @@ module Foodbot
     belongs_to :retailer, class_name: 'Foodbot::Retailer'
     belongs_to :product, class_name: 'Foodbot::Product'
 
-    scope :latest, -> { includes(:product, :retailer).where(download_date: maximum(:download_date)) }
+    scope :latest, -> { where(download_date: maximum(:download_date)) }
 
     class << self
       def process_deals(product, retailer)

@@ -41,7 +41,7 @@ module Foodbot
     end
 
     def deals
-      @deals = Deal.latest.where(product: params[:id])
+      @deals = Deal.includes(:retailer).latest.where(product: params[:id])
       render template: 'foodbot/deals/index'
     end
 
