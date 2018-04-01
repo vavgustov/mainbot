@@ -2,37 +2,51 @@
   <h1 class="title has-text-centered">No trends found.</h1>
 <% else %>
   <h1 class="title has-text-centered">Github new trends from <%= @trends.first.download_date %></h1>
-  <table class="table is-striped">
-    <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th width="15%">Stats</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @trends.each do |trend| %>
-    <tr>
-      <td>
-        <%= link_to trend.title, trend.link, target: "_blank" %>
-        <br/>
-        <%= octicon 'star', height: 14 %>
-        <%= trend.stars %> /
-        <%= octicon 'repo-forked', height: 14 %>
-        <%= trend.forks %>
-      </td>
-      <td>
-        <%= trend.description %>
-        <br/>
-        <i><%= trend.language.title %> / <%= trend.github_language %></i>
-      </td>
-      <td><%= trend.stats %></td>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
 
-  <hr/>
+  <div class="columns">
+    <div class="column is-three-quarters">
+      <table class="table is-striped">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th width="15%">Stats</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @trends.each do |trend| %>
+          <tr>
+            <td>
+              <%= link_to trend.title, trend.link, target: "_blank" %>
+              <br/>
+              <%= octicon 'star', height: 14 %>
+              <%= trend.stars %> /
+              <%= octicon 'repo-forked', height: 14 %>
+              <%= trend.forks %>
+            </td>
+            <td>
+              <%= trend.description %>
+              <br/>
+              <i><%= trend.language.title %> / <%= trend.github_language %></i>
+            </td>
+            <td><%= trend.stats %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="column is-one-quarter">
+      <%= render 'shared/facets' do %>
+        <% @languages.each do |language| %>
+          <li>
+            <%= link_to trends_octobot_language_path(language), class: is_active_page(trends_octobot_language_path(language)) do %>
+              <%= language.title %><span class="tag is-pulled-right"><%= language_trends_count language %></span>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
   <%= link_to 'Mark as checked', octobot_status_path, class: 'button is-link', method: :put %>
 <% end %>

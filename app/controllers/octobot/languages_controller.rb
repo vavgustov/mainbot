@@ -1,6 +1,9 @@
 module Octobot
   class LanguagesController < BaseController
+    include HasLanguages
+
     before_action :set_language, only: [:show, :edit, :update, :destroy]
+    before_action :set_languages, only: [:trends]
 
     def index
       @languages = Language.all
@@ -35,6 +38,11 @@ module Octobot
     def destroy
       @language.destroy
       redirect_to octobot_languages_url, notice: 'Language was successfully destroyed.'
+    end
+
+    def trends
+      @trends = Trend.where(checked: false, language: params[:id]).decorate
+      render 'octobot/trends/index'
     end
 
     private

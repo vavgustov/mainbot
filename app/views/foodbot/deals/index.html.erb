@@ -36,23 +36,20 @@
       <% end %>
     </div>
     <div class="column is-one-quarter">
-      <aside class="menu">
-        <p class="menu-label">Filters</p>
-        <ul class="menu-list">
+      <%= render 'shared/facets' do %>
+        <li>
+          <%= link_to foodbot_root_path, class: is_active_page(foodbot_root_path) do %>
+            All <span class="tag is-pulled-right"><%= @deals.count %></span>
+          <% end %>
+        </li>
+        <% @products.each do |product| %>
           <li>
-            <%= link_to foodbot_root_path, class: is_active_page(foodbot_root_path) do %>
-              All <span class="tag is-pulled-right"><%= @deals.count %></span>
+            <%= link_to deals_foodbot_product_path(product), class: is_active_page(deals_foodbot_product_path(product)) do %>
+              <%= product.title %><span class="tag is-pulled-right"><%= product_deals_count(product) %></span>
             <% end %>
           </li>
-          <% @products.each do |product| %>
-            <li>
-              <%= link_to deals_foodbot_product_path(product), class: is_active_page(deals_foodbot_product_path(product)) do %>
-                <%= product.title %><span class="tag is-pulled-right"><%= product_deals_count(product) %></span>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </aside>
+        <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>

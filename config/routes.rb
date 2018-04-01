@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :octobot do
-    resources :languages
+    resources :languages do
+      member do
+        get 'trends'
+      end
+    end
     resource :status, only: :update, controller: :trend_statuses
     root 'trends#index'
   end
