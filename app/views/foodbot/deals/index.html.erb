@@ -6,31 +6,57 @@
     от <%= @deals.first.download_date.strftime('%m/%d/%Y') %>
   </h1>
 
-  <% @deals.each_slice(4) do |deals| %>
-    <div class="columns">
-      <% deals.each do |deal| %>
-        <div class="column is-one-quarter">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <%= image_tag deal.image %>
-              </figure>
-            </div>
-
-            <div class="card-content">
-              <div class="content">
-                <div class="has-text-weight-bold">
-                  <%= deal.description %> <span class="tag"><%= deal.discount %></span>
+  <div class="columns">
+    <div class="column is-three-quarters">
+      <% @deals.each_slice(3) do |deals| %>
+        <div class="columns">
+          <% deals.each do |deal| %>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <%= image_tag deal.image %>
+                  </figure>
                 </div>
-                <div><span class="has-text-danger has-text-weight-bold is-size-4"><%= deal.price_new %></span> /
-                  <s class="is-size-6"><%= deal.price_old %></s></div>
-                <div class="has-text-weight-bold"><%= deal.quantity %></div>
-                <div><%= deal.date %></div>
+                <div class="card-content">
+                  <div class="content">
+                    <div class="has-text-weight-bold">
+                      <%= deal.description %> <span class="tag"><%= deal.discount %></span>
+                    </div>
+                    <div><span class="has-text-danger has-text-weight-bold is-size-4"><%= deal.price_new %></span> /
+                      <s class="is-size-6"><%= deal.price_old %></s></div>
+                    <div class="has-text-weight-bold"><%= deal.quantity %></div>
+                    <div><%= deal.date %></div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     </div>
-  <% end %>
+    <div class="column is-one-quarter">
+      <div class="columns">
+        <div class="column">
+          <aside class="menu">
+            <p class="menu-label">Filters</p>
+            <ul class="menu-list">
+              <li>
+                <%= link_to foodbot_root_path, class: is_active_page(foodbot_root_path) do %>
+                  All <span class="tag is-pulled-right"><%= @deals.count %></span>
+                <% end %>
+              </li>
+              <% @products.each do |product| %>
+                <li>
+                  <%= link_to deals_foodbot_product_path(product), class: is_active_page(deals_foodbot_product_path(product)) do %>
+                    <%= product.title %><span class="tag is-pulled-right"><%= product_deals_count(product) %></span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

@@ -22,4 +22,8 @@ module ApplicationHelper
   def is_active_page(path)
     current_page?(path) ? "is-active" : ""
   end
+
+  def product_deals_count(product)
+    Foodbot::Deal.latest.where(product: product).count
+  end
 end

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   namespace :foodbot do
     resources :retailers
-    resources :products
+    resources :products do
+      member do
+        get 'deals'
+      end
+    end
     root 'deals#index'
   end
 

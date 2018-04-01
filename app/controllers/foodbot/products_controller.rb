@@ -1,6 +1,9 @@
 module Foodbot
   class ProductsController < BaseController
+    include HasProducts
+
     before_action :set_product, only: [:show, :edit, :update, :destroy]
+    before_action :set_products, only: [:deals]
 
     def index
       @products = Product.all
@@ -35,6 +38,11 @@ module Foodbot
     def destroy
       @product.destroy
       redirect_to foodbot_products_url, notice: 'Product type was successfully destroyed.'
+    end
+
+    def deals
+      @deals = Deal.latest.where(product: params[:id])
+      render template: 'foodbot/deals/index'
     end
 
     private
