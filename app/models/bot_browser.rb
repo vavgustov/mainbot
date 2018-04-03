@@ -5,7 +5,6 @@ module BotBrowser
 
   class << self
     def download(url, js: true)
-      Capybara.reset!
       page = process_download(url, js)
       raise Swarm::SpiderDownloadFailure, url if page.nil?
       page
