@@ -6,7 +6,7 @@ module Foodbot
     before_action :set_products, only: [:deals]
 
     def index
-      @products = Product.all
+      @products = Product.order(:title)
     end
 
     def show; end
