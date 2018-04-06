@@ -39,7 +39,7 @@
       <%= render 'shared/facets' do %>
         <li>
           <%= link_to foodbot_root_path, class: is_active_page(foodbot_root_path) do %>
-            All <span class="tag is-pulled-right"><%= @deals.count %></span>
+            All <span class="tag is-pulled-right"><%= @deals_all.count %></span>
           <% end %>
         </li>
         <% @products.each do |product| %>

@@ -1,9 +1,11 @@
 module Foodbot
   class ProductsController < BaseController
     include HasProducts
+    include DealsList
 
     before_action :set_product, only: [:show, :edit, :update, :destroy]
     before_action :set_products, only: [:deals]
+    before_action :set_all_deals, only: [:deals]
 
     def index
       @products = Product.order(:title)

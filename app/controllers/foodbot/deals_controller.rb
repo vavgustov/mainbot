@@ -1,11 +1,13 @@
 module Foodbot
   class DealsController < BaseController
+    include DealsList
     include HasProducts
 
     before_action :set_products
+    before_action :set_all_deals
 
     def index
-      @deals = Deal.includes(:retailer).latest
+      @deals = @deals_all
     end
   end
 end
