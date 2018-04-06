@@ -1,5 +1,5 @@
 # Swarm
-All bots uninted in the swarm.
+All bots united in the swarm.
 
 ## Launch agent
 ```
