@@ -10,7 +10,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
 
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 3.4', '>= 3.4.1'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 gem 'bootsnap', require: false
 gem 'draper', '~> 3.0', '>= 3.0.1'
