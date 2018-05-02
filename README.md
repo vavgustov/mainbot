@@ -1,6 +1,18 @@
 # Swarm
 All bots united in the swarm.
 
+> **Note:** this application developed for personal needs.
+
+![image](https://user-images.githubusercontent.com/312873/39545547-2eb59d6e-4e5a-11e8-8d3a-7672fa7dd780.png)
+
+## Table of Contents
+- [Bots](#bots)
+- [Launch agent](#launch-agent)
+
+## Bots
+* Foodbot: food discount reports
+* Octobot: unread Github trends reports
+
 ## Launch agent
 ```
 <?xml version="1.0" encoding="UTF-8"?>
