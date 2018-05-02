@@ -3,13 +3,18 @@
 <head>
   <title>Swarm</title>
   <%= csrf_meta_tags %>
+  <%= tag("meta", name: "viewport", content: "width=device-width, initial-scale=1") %>
+
+  <%= favicon_link_tag asset_pack_path('images/favicon.ico') %>
+  <%= render 'shared/apple_touch_icons' %>
+
   <%= stylesheet_pack_tag 'application' %>
 </head>
 <body>
 <%= render 'shared/navbar' %>
 
 <section class="section">
-  <div class="container is-fluid">
+  <div class="container">
     <%= render_notifications if !flash.empty? %>
     <%= yield %>
   </div>
