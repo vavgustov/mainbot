@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20180326180549) do
     t.integer "stars"
     t.integer "forks"
     t.string "stats"
-    t.boolean "checked"
+    t.boolean "active"
     t.date "download_date"
     t.index ["language_id"], name: "index_octobot_trends_on_language_id"
     t.index ["title"], name: "index_octobot_trends_on_title", unique: true
