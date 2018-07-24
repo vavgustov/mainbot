@@ -9,7 +9,7 @@ gem 'rails', '~> 5.1.6'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
 
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 4.1'
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 gem 'bootsnap', require: false
@@ -21,9 +21,9 @@ gem 'octicons_helper'
 group :development, :test do
   gem 'faker'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 3.4'
   gem 'poltergeist', '~> 1.17'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.13'
 end
 
 group :development do
